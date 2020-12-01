@@ -8,6 +8,15 @@
   height: 120px;
 }
 
+.card-movie.card-new {
+  border: 1px dashed white;
+}
+
+.card-movie.card-new h3 {
+  font-size: 64px;
+  font-weight: bolder;
+}
+
 .card-movie h3 {
   font-size: 24px;
 }
