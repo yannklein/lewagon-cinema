@@ -28,6 +28,25 @@
   height: 100%;
 }
 
+.cinema-selected-menu {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  border-radius: 4%;
+}
+
+.cinema-selected-menu a {
+  padding: 2px 8px;
+  margin: 8px 0;
+  background-color: red;
+  text-align: center;
+  display: block;
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
 .cinema-movies {
   position: fixed;
   bottom: 0;
