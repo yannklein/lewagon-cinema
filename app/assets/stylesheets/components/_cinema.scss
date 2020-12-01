@@ -20,7 +20,7 @@
 
 .cinema-selected-movie {
   flex-grow: 1;
-  margin-bottom: 136px;
+  margin-bottom: 168px;
 }
 
 .cinema-selected-movie iframe{
@@ -34,10 +34,24 @@
   left: 0;
   height: 160px;
   width: 100%;
-  padding: 8px;
+  padding: 0 8px;
   background-color: black;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 8px;
+  transition: 1s;
+}
+
+.cinema-movies-more {
+  cursor: pointer;
+  font-size: 64px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cinema-movies.open {
+  height: calc(100vh - 128px);
 }
 

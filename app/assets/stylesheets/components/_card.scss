@@ -5,6 +5,15 @@
   justify-content: center;
   text-decoration: none;
   color: white;
+  height: 160px;
+}
+
+.card-movie h3 {
+  font-size: 24px;
+}
+
+.card-movie p {
+  margin: 0;
 }
 
 .card-movie:hover {
