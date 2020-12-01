@@ -64,6 +64,10 @@
   grid-gap: 16px;
 }
 
+.cinema-movies-container {
+  margin-bottom: 64px;
+}
+
 .cinema-movies-more {
   cursor: pointer;
   font-size: 64px;
@@ -75,5 +79,10 @@
 
 .cinema-movies.open {
   height: calc(100vh - 128px);
+}
+
+.cinema-movies-content {
+  overflow: scroll;
+  height: 100%;
 }
 

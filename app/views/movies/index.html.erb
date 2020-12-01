@@ -5,39 +5,40 @@
     </div>
     <div class="cinema-selected-movie">
       <div class="cinema-selected-menu">
-        <%= link_to edit_movie_path(@current_movie) do %>
+        <%= link_to edit_movie_path(@featured_movies.first) do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to movie_path(@current_movie), method: :delete,
+        <%= link_to movie_path(@featured_movies.first), method: :delete,
             data: { confirm: "Are you sure?" } do %>
           <i class="fas fa-times"></i>
         <% end %>
       </div>
       <iframe
-        src="https://www.youtube.com/embed/<%= @current_movie.youtube_id %>"
+        src="https://www.youtube.com/embed/<%= @featured_movies.first.youtube_id %>"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
     <div class="cinema-movies">
-      <div class="cinema-movies-grid">
-        <p class="cinema-movies-more">🎞</p>
-        <%= link_to new_movie_path, class: "card-movie" do %>
-          <h3>+</h3>
-        <% end %>
-        <script>
-          document.querySelector(".cinema-movies-more").addEventListener("click", () => {
-            document.querySelector(".cinema-movies").classList.toggle("open");
-          });
-        </script>
-        <% @movies.each do |movie| %>
-          <% movie_url = "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg" %>
-          <%= link_to "#{movies_path}?selected_movie=#{movie.id}", class: "card-movie", style: "background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1)), url(#{image_path movie_url});background-size: cover" do %>
-              <h3><%= movie.title %></h3>
-              <p><%= movie.project_category.name %></p>
-              <p>#<%= movie.batch %></p>
-          <% end %>
+      <p class="cinema-movies-more">🎞</p>
+      <script>
+        document.querySelector(".cinema-movies-more").addEventListener("click", () => {
+          document.querySelector(".cinema-movies").classList.toggle("open");
+        });
+      </script>
+      <div class="cinema-movies-content">
+        <%= render 'movies/movie_grid',
+            movies: @featured_movies,
+            new_card: true,
+            category_name: "Featured",
+            category_description: "" %>
+        <% ProjectCategory.all.each do |category| %>
+          <%= render 'movies/movie_grid',
+            movies: @movies.select { |movie| movie.project_category == category},
+            new_card: false,
+            category_name: category.name,
+            category_description: category.description %>
         <% end %>
       </div>
     </div>

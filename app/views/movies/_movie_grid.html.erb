@@ -1,0 +1,23 @@
+<div class="cinema-movies-container">
+  <% if movies.any? %>
+  <h3><%= category_name %></h3>
+  <% if category_description.present? %>
+    <p><%= category_description %></p>
+  <% end %>
+  <div class="cinema-movies-grid">
+    <% if new_card %>
+      <%= link_to new_movie_path, class: "card-movie" do %>
+        <h3>+</h3>
+      <% end %>
+    <% end %>
+      <% movies.each do |movie| %>
+        <% movie_url = "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg" %>
+        <%= link_to "#{movies_path}?selected_movie=#{movie.id}", class: "card-movie", style: "background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1)), url(#{image_path movie_url});background-size: cover" do %>
+            <h3><%= movie.title %></h3>
+            <p><%= movie.project_category.name %></p>
+            <p>#<%= movie.batch %></p>
+        <% end %>
+      <% end %>
+  </div>
+  <% end %>
+</div>
