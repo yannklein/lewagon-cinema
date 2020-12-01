@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
     @featured_movies = @movies.sample(4)
+    @current_movie = @featured_movies.first
     if params[:selected_movie].present?
       @current_movie = Movie.find(params[:selected_movie].to_i)
     end

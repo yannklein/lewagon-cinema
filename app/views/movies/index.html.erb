@@ -5,16 +5,16 @@
     </div>
     <div class="cinema-selected-movie">
       <div class="cinema-selected-menu">
-        <%= link_to edit_movie_path(@featured_movies.first) do %>
+        <%= link_to edit_movie_path(@current_movie) do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to movie_path(@featured_movies.first), method: :delete,
+        <%= link_to movie_path(@current_movie), method: :delete,
             data: { confirm: "Are you sure?" } do %>
           <i class="fas fa-times"></i>
         <% end %>
       </div>
       <iframe
-        src="https://www.youtube.com/embed/<%= @featured_movies.first.youtube_id %>"
+        src="https://www.youtube.com/embed/<%= @current_movie.youtube_id %>"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>

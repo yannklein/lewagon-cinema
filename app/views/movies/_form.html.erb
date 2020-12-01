@@ -25,7 +25,7 @@
     </div>
     <div class="col-12 col-md-5 col-xl-8 my-3">
       <% if movie.youtube_id.present? %>
-        <%= image_tag "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg" %>
+        <%= image_tag "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg", class: "form-image" %>
       <% else %>
         <%= image_tag "http://i3.ytimg.com/vi/#{Movie.first.youtube_id.split('?start')[0]}/maxresdefault.jpg", class: "form-image" %>
       <% end %>
