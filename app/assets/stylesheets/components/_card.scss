@@ -1,0 +1,13 @@
+.card-movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+}
+
+.card-movie:hover {
+  text-decoration: none;
+  color: white;
+}
