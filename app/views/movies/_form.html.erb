@@ -6,7 +6,8 @@
         <h1>List a new demo 📼</h1>
       </div>
       <%= simple_form_for movie do |f| %>
-        <%= f.input :title, label: false, placeholder: "Product name" %>
+        <%= f.input :title, label: false, placeholder: "Its product name" %>
+        <%= f.input :batch, label: false, placeholder: "Its batch #" %>
         <%= f.input :description, as: :text, label: false, placeholder: "A bit of description" %>
         <%= f.input :youtube_id, label: false, placeholder: "The youtube ID/time, e.g. 'hV3tRDmsq-A?start=215'" %>
         <%= f.association :project_category, label: "The demo category" %>

@@ -12,23 +12,25 @@
       </iframe>
     </div>
     <div class="cinema-movies">
-      <p class="cinema-movies-more">🎞</p>
-      <%= link_to new_movie_path, class: "card-movie" do %>
-        <h3>+</h3>
-      <% end %>
-      <script>
-        document.querySelector(".cinema-movies-more").addEventListener("click", () => {
-          document.querySelector(".cinema-movies").classList.toggle("open");
-        });
-      </script>
-      <% @movies.each do |movie| %>
-        <% movie_url = "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg" %>
-        <%= link_to "#{movies_path}?selected_movie=#{movie.id}", class: "card-movie", style: "background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1)), url(#{image_path movie_url});background-size: cover" do %>
-            <h3><%= movie.title %></h3>
-            <p><%= movie.project_category.name %></p>
-            <p>#<%= movie.batch %></p>
+      <div class="cinema-movies-grid">
+        <p class="cinema-movies-more">🎞</p>
+        <%= link_to new_movie_path, class: "card-movie" do %>
+          <h3>+</h3>
         <% end %>
-      <% end %>
+        <script>
+          document.querySelector(".cinema-movies-more").addEventListener("click", () => {
+            document.querySelector(".cinema-movies").classList.toggle("open");
+          });
+        </script>
+        <% @movies.each do |movie| %>
+          <% movie_url = "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg" %>
+          <%= link_to "#{movies_path}?selected_movie=#{movie.id}", class: "card-movie", style: "background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1)), url(#{image_path movie_url});background-size: cover" do %>
+              <h3><%= movie.title %></h3>
+              <p><%= movie.project_category.name %></p>
+              <p>#<%= movie.batch %></p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 
