@@ -1,2 +1,23 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
+  <div class="cinema-container">
+    <div class="cinema-title">
+      <%= image_tag "logo.png", alt: "logo" %>
+      <h1>Le Wagon Cinema 📽</h1>
+    </div>
+    <div class="cinema-selected-movie">
+      <iframe
+        src="https://www.youtube.com/embed/<%= @current_movie.youtube_id %>"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="cinema-movies">
+      <% @movies.each do |movie| %>
+        <% movie_url = "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg" %>
+        <div class="card-movie" style='background-image: url(<%= image_path movie_url %>)'>
+          <h3><%= movie.title %></h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
+

@@ -10,7 +10,7 @@ teaching = ProjectCategory.create(name: "Teaching app", description: "App teachi
 community_manager = ProjectCategory.create(name: "Community manager", description: "App improving/managing human interaction in a community")
 
 Movie.create(
-  name: "Clever Closet",
+  title: "Clever Closet",
   description: "Smaller Closet, Bigger Impact. Using CleverCloset can help reduce your overall carbon footprint.",
   project_category: rl_assistant,
   youtube_id: "hV3tRDmsq-A?start=215",
@@ -18,7 +18,7 @@ Movie.create(
 )
 
 Movie.create(
-  name: "Kiota",
+  title: "Kiota",
   description: "No nihongo? No problem, find the perfect place to experience life in Tokyo",
   project_category: aggregator,
   youtube_id: "hV3tRDmsq-A?start=684",
@@ -26,7 +26,7 @@ Movie.create(
 )
 
 Movie.create(
-  name: "Way to Snow",
+  title: "Way to Snow",
   description: "Go find the perfect powder...",
   project_category: aggregator,
   youtube_id: "hV3tRDmsq-A?start=1397",
@@ -34,7 +34,7 @@ Movie.create(
 )
 
 Movie.create(
-  name: "Clarify",
+  title: "Clarify",
   description: "Clearing up the mystery surrounding skincare science",
   project_category: rl_assistant,
   youtube_id: "hV3tRDmsq-A?start=1735",
@@ -42,7 +42,7 @@ Movie.create(
 )
 
 Movie.create(
-  name: "Bokkun",
+  title: "Bokkun",
   description: "Simply Expense",
   project_category: pro_tool,
   youtube_id: "hV3tRDmsq-A?start=2699",
