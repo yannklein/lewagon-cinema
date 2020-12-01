@@ -1,0 +1,25 @@
+<div class="m-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-7 col-xl-4 my-3">
+      <div class="form-title">
+        <%= image_tag "logo.png", alt: "logo"%>
+        <h1>List a new demo 📼</h1>
+      </div>
+      <%= simple_form_for movie do |f| %>
+        <%= f.input :title, label: false, placeholder: "Product name" %>
+        <%= f.input :description, as: :text, label: false, placeholder: "A bit of description" %>
+        <%= f.input :youtube_id, label: false, placeholder: "The youtube url" %>
+        <%= f.association :project_category, label: "The demo category" %>
+        <%= f.button :submit, class: 'btn btn-danger', value: "List it! 🎬" %>
+      <% end %>
+      <%= link_to "Back to the demos", movies_path, class: "btn btn-outline-danger mt-5" %>
+    </div>
+    <div class="col-12 col-md-5 col-xl-8 my-3">
+      <% if movie.youtube_id.present? %>
+        <%= image_tag "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg" %>
+      <% else %>
+        <%= image_tag "http://i3.ytimg.com/vi/#{Movie.first.youtube_id.split('?start')[0]}/maxresdefault.jpg", class: "form-image" %>
+      <% end %>
+    </div>
+  </div>
+</div>
