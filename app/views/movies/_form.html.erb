@@ -13,7 +13,7 @@
         <%= f.input :title, label: false, placeholder: "Its product name" %>
         <%= f.input :batch, label: false, placeholder: "Its batch #" %>
         <%= f.input :description, as: :text, label: false, placeholder: "A bit of description" %>
-        <%= f.input :youtube_id, label: false, placeholder: "The youtube ID/time, e.g. 'hV3tRDmsq-A?start=215'" %>
+        <%= f.input :youtube_id, label: false, placeholder: "The youtube video URL with start time" %>
         <%= f.association :project_category, label: "The demo category" %>
         <% if is_new %>
           <%= f.button :submit, class: 'btn btn-danger', value: "List it! 🎬" %>
