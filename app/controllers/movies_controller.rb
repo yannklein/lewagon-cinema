@@ -16,6 +16,8 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    # accept multi youtube url type and standardize
+    @movie.youtube_id = standardize_yt_id(@movie.youtube_id)
     if @movie.save
       redirect_to movies_path
     else
@@ -27,6 +29,8 @@ class MoviesController < ApplicationController
   end
 
   def update
+    # accept multi youtube url type and standardize
+    # movie_params["youtube_id"] = standardize_yt_id(movie_params["youtube_id"])
     if @movie.update(movie_params)
       redirect_to movies_path
     else
@@ -46,6 +50,19 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
+    params["movie"]["youtube_id"] = standardize_yt_id(params["movie"]["youtube_id"])
     params.require(:movie).permit(:title, :description, :youtube_id, :project_category_id, :batch)
+  end
+
+  def standardize_yt_id(id)
+    # Possible input:
+    # - https://www.youtube.com/watch?v=gcwB2wUWWPU&t=958s
+    # - https://www.youtube.com/embed/gcwB2wUWWPU?start=1007
+    # - gcwB2wUWWPU&t=958s
+    # - gcwB2wUWWPU?start=958
+    # Desiered output
+    # - gcwB2wUWWPU&start=958
+    match_data = id.match(/\A(https:\/\/www\.youtube\.com\/watch\?v=|https:\/\/www\.youtube\.com\/embed\/)?(?<youtube_id>.*)(&t=|\?start=)(?<time>\d*)s?/)
+    return match_data.nil? ? nil : "#{match_data[:youtube_id]}?start=#{match_data[:time]}"
   end
 end
