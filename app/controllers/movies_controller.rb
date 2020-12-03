@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
     # accept multi youtube url type and standardize
     @movie.youtube_id = standardize_yt_id(@movie.youtube_id)
     if @movie.save
-      redirect_to movies_path
+      redirect_to "#{movies_path}?selected_movie=#{@movie.id}"
     else
       render 'new'
     end
@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
     # accept multi youtube url type and standardize
     # movie_params["youtube_id"] = standardize_yt_id(movie_params["youtube_id"])
     if @movie.update(movie_params)
-      redirect_to movies_path
+      redirect_to "#{movies_path}?selected_movie=#{@movie.id}"
     else
       render 'edit'
     end
