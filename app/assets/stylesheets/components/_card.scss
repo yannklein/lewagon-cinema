@@ -23,6 +23,7 @@
 
 .card-movie p {
   margin: 0;
+  text-align: center;
 }
 
 .card-movie:hover {
@@ -39,7 +40,7 @@
     font-size: 12px;
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 500px) {
   .card-movie.card-new {
     display: none;
   }
