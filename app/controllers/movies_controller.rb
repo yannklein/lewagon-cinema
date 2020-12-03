@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :set_movie, only: [:edit, :update, :destroy]
+
   def index
     @movies = Movie.all
     @featured_movies = @movies.sample(4)
@@ -22,12 +24,10 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
   end
 
   def update
-    @movie = Movie.new(movie_params)
-    if @movie.save
+    if @movie.update(movie_params)
       redirect_to movies_path
     else
       render 'edit'
@@ -35,12 +35,15 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
     @movie.destroy
     redirect_to movies_path
   end
 
   private
+
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
   def movie_params
     params.require(:movie).permit(:title, :description, :youtube_id, :project_category_id, :batch)
