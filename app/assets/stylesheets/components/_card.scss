@@ -29,3 +29,18 @@
   text-decoration: none;
   color: white;
 }
+
+@media (max-width: 800px) {
+  .card-movie h3 {
+    font-size: 16px;
+  }
+
+  .card-movie p {
+    font-size: 12px;
+  }
+}
+@media (max-width: 800px) {
+  .card-movie.card-new {
+    display: none;
+  }
+}
