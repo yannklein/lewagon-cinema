@@ -75,6 +75,17 @@
   top: 0px;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation-duration: 1s;
+  animation-name: jump;
+}
+
+@keyframes jump {
+  20% { transform: translate(-50%, -60%); }
+  30% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, -70%); }
+  60% { transform: translate(-50%, -50%); }
+  80% { transform: translate(-50%, -55%); }
+  100% { transform: translate(-50%, -50%); }
 }
 
 .cinema-movies.open {
