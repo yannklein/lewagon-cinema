@@ -4,6 +4,10 @@
       <h1>Le Wagon Cinema 📽</h1>
     </div>
     <div class="cinema-selected-movie">
+      <div class="cinema-selected-title">
+        <h2><%= @current_movie.title %></h2>
+        <p><%= @current_movie.description %></p>
+      </div>
       <div class="cinema-selected-menu">
         <%= link_to edit_movie_path(@current_movie) do %>
           <i class="fas fa-pencil-alt"></i>
