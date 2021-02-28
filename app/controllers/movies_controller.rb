@@ -55,14 +55,21 @@ class MoviesController < ApplicationController
   end
 
   def standardize_yt_id(id)
+    return nil if id.nil?
+
     # Possible input:
+    # - https://youtu.be/QMDunGmWEAw?t=1639
+    # - https://www.youtube.com/watch?v=37jQronuCYo
     # - https://www.youtube.com/watch?v=gcwB2wUWWPU&t=958s
     # - https://www.youtube.com/embed/gcwB2wUWWPU?start=1007
     # - gcwB2wUWWPU&t=958s
     # - gcwB2wUWWPU?start=958
     # Desiered output
     # - gcwB2wUWWPU&start=958
-    match_data = id.match(/\A(https:\/\/www\.youtube\.com\/watch\?v=|https:\/\/www\.youtube\.com\/embed\/)?(?<youtube_id>.*)(&t=|\?start=)(?<time>\d*)s?/)
+    id = id.gsub("https://www.youtube.com/watch?v=", "")
+    id = id.gsub("https://www.youtube.com/embed/", "")
+    id = id.gsub("https://youtu.be/", "")
+    match_data = id.match(/\A(?<youtube_id>\w*)(&t=|\?start=)?(?<time>\d*)s?/)
     return match_data.nil? ? nil : "#{match_data[:youtube_id]}?start=#{match_data[:time]}"
   end
 end
