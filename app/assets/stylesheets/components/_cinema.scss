@@ -21,12 +21,14 @@
 .cinema-selected-movie {
   position: relative;
   flex-grow: 1;
-  margin-bottom: calc(120px + 32px + 32px);
+  margin-bottom: calc(40px + 32px + 32px);
+  display: flex;
+  flex-direction: column;
 }
 
 .cinema-selected-movie iframe{
   width: 100%;
-  height: 100%;
+  flex-grow: 1;
 }
 
 .cinema-selected-title {
@@ -69,7 +71,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  height: calc(120px + 32px + 32px);
+  height: calc(40px + 32px + 32px);
   width: 100%;
   padding: 16px;
   background-color: black;
