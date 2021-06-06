@@ -4,6 +4,16 @@
       <h1>Le Wagon Cinema 📽</h1>
     </div>
     <div class="cinema-selected-movie">
+      <iframe
+        src="https://www.youtube.com/embed/<%= @current_movie.youtube_id %>"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <div class="iframe-cover iframe-cover-left"></div>
+      <div class="iframe-cover iframe-cover-right"></div>
+      <div class="iframe-cover iframe-cover-top"></div>
+      <div class="iframe-cover iframe-cover-bottom"></div>
       <div class="cinema-selected-title">
         <h2><%= @current_movie.title %></h2>
         <p><%= @current_movie.description %></p>
@@ -17,20 +27,9 @@
           <i class="fas fa-times"></i>
         <% end %>
       </div>
-      <iframe
-        src="https://www.youtube.com/embed/<%= @current_movie.youtube_id %>"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
     </div>
     <div class="cinema-movies">
       <p class="cinema-movies-more">🎞</p>
-      <script>
-        document.querySelector(".cinema-movies-more").addEventListener("click", () => {
-          document.querySelector(".cinema-movies").classList.toggle("open");
-        });
-      </script>
       <div class="cinema-movies-content">
         <%= render 'movies/movie_grid',
             movies: @featured_movies,

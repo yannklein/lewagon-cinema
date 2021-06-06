@@ -31,6 +31,41 @@
   flex-grow: 1;
 }
 
+.cinema-selected-movie .iframe-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // background-color: red;
+}
+
+.cinema-selected-movie .iframe-cover.iframe-cover-left {
+  bottom: 10%;
+  left: 0;
+  width: 40%;
+}
+
+.cinema-selected-movie .iframe-cover.iframe-cover-right {
+  bottom: 10%;
+  right: 0;
+  width: 40%;
+}
+
+.cinema-selected-movie .iframe-cover.iframe-cover-top {
+  top: 0;
+  left: 0;
+  height: 40%;
+}
+
+.cinema-selected-movie .iframe-cover.iframe-cover-bottom {
+  bottom: 10%;
+  left: 0;
+  height: 30%;
+}
+
+.cinema-selected-movie .iframe-cover.to-the-back {
+  z-index: -1;
+}
+
 .cinema-selected-title {
   position: absolute;
   top: 8px;
