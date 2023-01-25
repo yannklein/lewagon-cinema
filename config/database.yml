@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: lewagon_cinema_development
+  database: one_db_to_rule_them_all_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: lewagon_cinema_production
-  username: lewagon_cinema
-  password: <%= ENV['LEWAGON_CINEMA_DATABASE_PASSWORD'] %>
+  database: one_db_to_rule_them_all_production
+  username: one_db_to_rule_them_all
+  password: <%= ENV["ONE_DB_TO_RULE_THEM_ALL_DATABASE_PASSWORD"] %>
