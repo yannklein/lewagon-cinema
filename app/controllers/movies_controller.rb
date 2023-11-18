@@ -51,7 +51,7 @@ class MoviesController < ApplicationController
 
   def movie_params
     params["movie"]["youtube_id"] = standardize_yt_id(params["movie"]["youtube_id"])
-    params.require(:movie).permit(:title, :description, :youtube_id, :project_category_id, :batch)
+    params.require(:movie).permit(:title, :description, :youtube_id, :project_category_id, :lw_cinema_project_category_id, :batch)
   end
 
   def standardize_yt_id(id)
