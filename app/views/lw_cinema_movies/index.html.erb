@@ -19,10 +19,10 @@
         <p><%= @current_movie.description %></p>
       </div>
       <div class="cinema-selected-menu">
-        <%= link_to edit_movie_path(@current_movie) do %>
+        <%= link_to edit_lw_cinema_movie_path(@current_movie) do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to movie_path(@current_movie), method: :delete,
+        <%= link_to lw_cinema_movie_path(@current_movie), method: :delete,
             data: { confirm: "Are you sure?" } do %>
           <i class="fas fa-times"></i>
         <% end %>
@@ -31,14 +31,14 @@
     <div class="cinema-movies">
       <p class="cinema-movies-more">🎞</p>
       <div class="cinema-movies-content">
-        <%= render 'movies/movie_grid',
+        <%= render 'lw_cinema_movies/lw_cinema_movie_grid',
             movies: @featured_movies,
             new_card: true,
             category_name: "Featured",
             category_description: "" %>
-        <% ProjectCategory.all.each do |category| %>
-          <%= render 'movies/movie_grid',
-            movies: @movies.select { |movie| movie.project_category == category},
+        <% LwCinemaProjectCategory.all.each do |category| %>
+          <%= render 'lw_cinema_movies/lw_cinema_movie_grid',
+            movies: @movies.select { |movie| movie.lw_cinema_project_category == category},
             new_card: false,
             category_name: category.name,
             category_description: category.description %>

@@ -1,25 +1,25 @@
-class MoviesController < ApplicationController
+class LwCinemaMoviesController < ApplicationController
   before_action :set_movie, only: [:edit, :update, :destroy]
 
   def index
-    @movies = Movie.all
+    @movies = LwCinemaMovie.all
     @featured_movies = @movies.sample(4)
     @current_movie = @featured_movies.first
     if params[:selected_movie].present?
-      @current_movie = Movie.find(params[:selected_movie].to_i)
+      @current_movie = LwCinemaMovie.find(params[:selected_movie].to_i)
     end
   end
 
   def new
-    @movie = Movie.new
+    @movie = LwCinemaMovie.new
   end
 
   def create
-    @movie = Movie.new(movie_params)
+    @movie = LwCinemaMovie.new(movie_params)
     # accept multi youtube url type and standardize
     @movie.youtube_id = standardize_yt_id(@movie.youtube_id)
     if @movie.save
-      redirect_to "#{movies_path}?selected_movie=#{@movie.id}"
+      redirect_to "#{lw_cinema_movies_path}?selected_movie=#{@movie.id}"
     else
       render 'new'
     end
@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
     # accept multi youtube url type and standardize
     # movie_params["youtube_id"] = standardize_yt_id(movie_params["youtube_id"])
     if @movie.update(movie_params)
-      redirect_to "#{movies_path}?selected_movie=#{@movie.id}"
+      redirect_to "#{lw_cinema_movies_path}?selected_movie=#{@movie.id}"
     else
       render 'edit'
     end
@@ -40,18 +40,18 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    redirect_to movies_path
+    redirect_to lw_cinema_movies_path
   end
 
   private
 
   def set_movie
-    @movie = Movie.find(params[:id])
+    @movie = LwCinemaMovie.find(params[:id])
   end
 
   def movie_params
-    params["movie"]["youtube_id"] = standardize_yt_id(params["movie"]["youtube_id"])
-    params.require(:movie).permit(:title, :description, :youtube_id, :project_category_id, :lw_cinema_project_category_id, :batch)
+    params["lw_cinema_movie"]["youtube_id"] = standardize_yt_id(params["lw_cinema_movie"]["youtube_id"])
+    params.require(:lw_cinema_movie).permit(:title, :description, :youtube_id, :lw_cinema_project_category_id, :batch)
   end
 
   def standardize_yt_id(id)

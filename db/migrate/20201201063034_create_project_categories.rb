@@ -1,6 +1,6 @@
 class CreateProjectCategories < ActiveRecord::Migration[6.0]
   def change
-    create_table :project_categories do |t|
+    create_table :lw_cinema_project_categories do |t|
       t.string :name
       t.string :description
 

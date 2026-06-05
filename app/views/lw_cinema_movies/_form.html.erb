@@ -14,20 +14,20 @@
         <%= f.input :batch, label: false, placeholder: "Its batch #" %>
         <%= f.input :description, as: :text, label: false, placeholder: "A bit of description" %>
         <%= f.input :youtube_id, label: false, placeholder: "The youtube video URL with start time" %>
-        <%= f.association :project_category, label: "The demo category" %>
+        <%= f.association :lw_cinema_project_category, label: "The demo category" %>
         <% if is_new %>
           <%= f.button :submit, class: 'btn btn-danger', value: "List it! 🎬" %>
         <% else %>
           <%= f.button :submit, class: 'btn btn-danger', value: "Save it! 🎬" %>
         <% end %>
       <% end %>
-      <%= link_to "Back to the demos", movies_path, class: "btn btn-outline-danger mt-5" %>
+      <%= link_to "Back to the demos", lw_cinema_movies_path, class: "btn btn-outline-danger mt-5" %>
     </div>
     <div class="col-12 col-md-5 col-xl-8 my-3">
       <% if movie.youtube_id.present? %>
         <%= image_tag "http://i3.ytimg.com/vi/#{movie.youtube_id.split('?start')[0]}/maxresdefault.jpg", class: "form-image" %>
       <% else %>
-        <%= image_tag "http://i3.ytimg.com/vi/#{Movie.first.youtube_id.split('?start')[0]}/maxresdefault.jpg", class: "form-image" %>
+        <%= image_tag "http://i3.ytimg.com/vi/#{LwCinemaMovie.first.youtube_id.split('?start')[0]}/maxresdefault.jpg", class: "form-image" %>
       <% end %>
     </div>
   </div>
