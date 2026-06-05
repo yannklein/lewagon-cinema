@@ -3,7 +3,10 @@ FROM ruby:3.2.2
 RUN apt-get update && apt-get install -y \
   build-essential libpq-dev libssl-dev \
   libyaml-dev zlib1g-dev libffi-dev \
-  nodejs yarn
+  curl gnupg && \
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+  apt-get update && apt-get install -y nodejs yarn
 
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
