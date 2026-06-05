@@ -13,7 +13,7 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 COPY . .
 RUN bundle exec rake assets:precompile
