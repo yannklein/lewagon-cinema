@@ -16,7 +16,7 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY package.json yarn.lock ./
-RUN yarn install
+RUN yarn install --ignore-engines
 
 COPY . .
 RUN bundle exec rake assets:precompile
