@@ -1,2 +1,4 @@
 [phases.setup]
 nixPkgs = ["ruby_3_2"]
+cmds = ["gem install bundler:2.4.10"]
+aptPkgs = ["procps", "libpq-dev", "git", "curl", "libssl-dev", "libyaml-dev", "zlib1g-dev", "libffi-dev", "libgdbm-dev", "libdb-dev"]
