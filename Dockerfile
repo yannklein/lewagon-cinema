@@ -19,6 +19,7 @@ COPY package.json yarn.lock ./
 RUN yarn install --ignore-engines
 
 COPY . .
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN bundle exec rake assets:precompile
 
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
