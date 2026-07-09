@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
-RUN bundle install
+RUN bundle config set --local without 'development test' && \
+    bundle install
 
 COPY package.json yarn.lock ./
 RUN yarn install --ignore-engines
